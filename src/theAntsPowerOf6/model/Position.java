@@ -1,5 +1,8 @@
 package theAntsPowerOf6.model;
 
+/*
+ * 
+ */
 public class Position {
 
 	int x, y;
@@ -22,22 +25,38 @@ public class Position {
 		}
 	}
 
+	/*
+	 * Get x position
+	 */
 	public int getX() {
 		return x;
 	}
 
+	/*
+	 * Set x position
+	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 
+	/*
+	 * Get y position
+	 */
 	public int getY() {
 		return y;
 	}
 
+	/*
+	 * Set y position
+	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		return getX() + "," + getY();
 	}

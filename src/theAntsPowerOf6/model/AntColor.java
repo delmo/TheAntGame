@@ -14,11 +14,14 @@ public enum AntColor {
 		this.value = val;
 	}
 	
+	/*
+	 * Check the colour for ant or anthill
+	 */
 	AntColor getColor(){
 		if(value){
-			return AntColor.Black;
-		}else{
 			return AntColor.Red;
+		}else{
+			return AntColor.Black;
 		}
 	}
 }

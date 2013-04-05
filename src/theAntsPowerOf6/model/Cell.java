@@ -23,7 +23,13 @@ public class Cell
 	private Position position;	
 	private AntColor hillColor;
 	
-	
+	/*
+	 * 1st Constructor
+	 * Set if the cell has one of this: anthill, rock, food.
+	 * Set the position of this cell.
+	 * If it is anthill, then what colour of the anthill.
+	 * If it is food, then how many food it has.
+	 */
 	public Cell(boolean antHill, boolean isRocky, Position position, AntColor antHillColor, int foodCount)
 	{
 		ant = null;
@@ -38,7 +44,10 @@ public class Cell
 		
 	}
 
-	
+	/*
+	 * Another Constructor
+	 * THis constructor is for labeling the cell.
+	 */
 	public Cell(char data, Position position)
 	{
 		this(false, false, position, AntColor.Black, 0);
@@ -71,12 +80,11 @@ public class Cell
 
 	}
 
-
-	
-	
-
-
-	
+	/*
+	 * Set marker.
+	 * @param color, color of an ant
+	 * @param marker, integer marker
+	 */
 	public void setMarker(AntColor color, int marker)
 	{
 		if (color == AntColor.Black)
@@ -89,7 +97,10 @@ public class Cell
 	}
 
 
-	
+	/*
+	 * Remove the marker.
+	 * The marker can only be removed by ant with same colour as marker
+	 */
 	public void clearMarker(AntColor color, int marker)
 	{
 		if (color == AntColor.Black)
@@ -102,7 +113,9 @@ public class Cell
 	}
 
 
-	
+	/*
+	 * Check marker & colour
+	 */
 	public boolean checkMarker(AntColor color, int marker)
 	{
 		if (color == AntColor.Black)
@@ -114,19 +127,27 @@ public class Cell
 		}
 	}
 	
-	
+	/*
+	 * Check there is a rock in the cell.
+	 */
 	public boolean isRocky()
 	{
 		return isRocky;
 	}
 		
-	
+	/*
+	 * Check is there a marker in the cell.
+	 * Black or Red.
+	 */
 	public boolean checkMarker()
 	{
 		return (markBlack > 0) || (markRed > 0);
 	}
 
-
+	/*
+	 * Check the colour of the marker.
+	 * Return the integer representing the marker.
+	 */
 	public boolean checkMarker(AntColor color)
 	{
 		if (color == AntColor.Black)
@@ -139,7 +160,9 @@ public class Cell
 	}
 
 
-	
+	/*
+	 * Boolean if anthill sits in this cell.
+	 */
 	public boolean isAntHillSetIfNot(AntColor color)
 	{
 		if (isAntHill)
@@ -152,66 +175,88 @@ public class Cell
 	}
 
 
-	
+	/*
+	 * Return integer number of food exists on this cell.
+	 */
 	public int getFoodCount()
 	{
 		return foodCount;
 	}
 
 
-	
+	/*
+	 * Set food count on this cell.
+	 * This is useful for a dead ant.
+	 */
 	public void setFoodCount(int foodCount)
 	{
 		this.foodCount = foodCount;
 	}
 	
 
-	
+	/*
+	 * Return the position of this cell.
+	 */
 	public Position getPosition()
 	{
 		return position;
 	}
 
 
-	
+	/*
+	 * Boolean if there is an ant or not.
+	 */
 	public boolean hasAnt()
 	{
 		return ant != null;
 	}
 
 
-	
+	/*
+	 * Return an ant.
+	 */
 	public Ant getAnt()
 	{
 		return ant;
 	}
 
 
-	
+	/*
+	 * Set an ant to this cell.
+	 */
 	public void setAnt(Ant ant)
 	{
 		this.ant = ant;
 	}
 
 
-	
+	/*
+	 * Remove an ant from this cell.
+	 */
 	public void removeAnt()
 	{
 		this.ant = null;
 	}
 
+	/*
+	 * Set true or false to represent if this cell
+	 * had changed or not.
+	 */
 	public void setChanged(boolean isChanged)
 	{
 		hasChanged = isChanged;
 	}
 
 
-	
+	/*
+	 * Check if this cell had changed.
+	 */
 	public boolean isChanged()
 	{
 		return hasChanged;
 	}
 
+	
 	@Override
 	public String toString()
 	{

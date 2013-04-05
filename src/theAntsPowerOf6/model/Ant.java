@@ -61,6 +61,9 @@ public class Ant {
 	}
 	*/
 
+	/*
+	 * Check colour
+	 */
 	public boolean isColour() {
 		return colour;
 	}
@@ -111,35 +114,7 @@ public class Ant {
 	public void setHasfood(boolean has_food) {
 		this.hasFood = has_food;
 	}
-
 	
-	/* Please anyone help think about this method....
-	public void sense(){
-		for(int i =0; i<6; i++){
-			if(colour == true){
-				//friend
-			}else if(colour == false){
-				//foe
-			}else if(colour == true && has_food == true){
-				//frien with food
-			}else if(colour == false && has_food == true){
-				//foe with food
-			}else if(food in square ahead ){
-				//food	in square	
-			}else if(rock in square ahead){
-				//rock in square	
-			}else if(foe marker){
-				//foe marker 	
-			}else if(friendly marker){
-				//friendly marker
-			}else if(Ant hill){
-				//ant hill drop food	
-			}else if(foe home){
-				//foe home	
-			}
-		}
-	}
-	*/
 	
 	//throw it away if not useful...
 	public void step(int id) {
@@ -160,6 +135,9 @@ public class Ant {
 		this.position = newPosition;		
 	}
 	
+	/*
+	 * Get position
+	 */
 	public Position getPosition(){
 		return position;
 	}
