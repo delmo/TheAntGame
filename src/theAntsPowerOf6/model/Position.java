@@ -1,7 +1,9 @@
 package theAntsPowerOf6.model;
 
-/*
- * 
+
+/**
+ * @author Tristan
+ * @version 0.02
  */
 public class Position {
 

@@ -1,6 +1,8 @@
 package theAntsPowerOf6.model;
 
 /*
+ * @author	Tristan
+ * @version 0.01
  * Enum for checking sense conditions
  */
 public enum Condition {

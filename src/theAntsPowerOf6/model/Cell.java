@@ -46,7 +46,7 @@ public class Cell
 
 	/*
 	 * Another Constructor
-	 * THis constructor is for labeling the cell.
+	 * THis constructor is for labelling the cell.
 	 */
 	public Cell(char data, Position position)
 	{
@@ -89,7 +89,7 @@ public class Cell
 	{
 		if (color == AntColor.Black)
 		{
-			markBlack |= Marker.get(marker).getValue();
+			markBlack |= Marker.get(marker).getValue(); // 2^marker is the returned value
 		} else
 		{
 			markRed |= Marker.get(marker).getValue();
@@ -105,7 +105,10 @@ public class Cell
 	{
 		if (color == AntColor.Black)
 		{
-			markBlack = markBlack & ~Marker.get(marker).getValue();
+			//use & bitwise operator and ~ complement operator to make it zero
+			//if and only if marker value is equal to markBlack.
+			//Otherwise, returned same markBlack value.
+			markBlack = markBlack & ~Marker.get(marker).getValue(); 
 		} else
 		{
 			markRed = markRed & ~Marker.get(marker).getValue();

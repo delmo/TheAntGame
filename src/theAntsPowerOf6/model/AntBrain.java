@@ -6,10 +6,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
+/**
+ * @author Tristan
+ * @version 0.02
+ */
+/**
+ * @author Rhayan
+ *
+ */
 public class AntBrain {
 	private String instructionName;
 	private Action[] states;
 	
+	
+	/**
+	 * 
+	 * @param name, instruction
+	 * @param file, AntBrain file name
+	 */
 	public AntBrain(String name, String file){
 		BufferedReader reader = null;
 		ArrayList<Action> actions = new ArrayList<Action>();
@@ -18,7 +32,7 @@ public class AntBrain {
 			reader = new BufferedReader(new FileReader(file));
 			String line = null;
 			while((line = reader.readLine()) != null){
-				line = line.split(";")[0];
+				line = line.split(";")[0]; // remove the comment after ;
 				if(line.length() > 0){
 					actions.add(new Action(line));
 				}else{
@@ -26,6 +40,7 @@ public class AntBrain {
 				}
 			}
 		}catch(Exception e){
+			//edit this line, check runtime error for reading file
 			System.out.println("File not accessible: " + e.getMessage());
 		}finally{
 			try{
@@ -36,6 +51,7 @@ public class AntBrain {
 				System.out.println("Cannot close the file: " + c.getMessage());
 			}
 		}
+		//put all actions in states[]
 		int size = actions.size();
 		states = new Action[size];
 		for(int i=0; i<size; i++){
@@ -43,14 +59,26 @@ public class AntBrain {
 		}
 	}
 	
+	
+	/**
+	 * @return size of states[]
+	 */
 	public int getStateSize(){
 		return states.length;
 	}
 	
+	
+	/**
+	 * @return all remaining states
+	 */
 	public Action[] getStates(){
 		return states;
 	}
 
+	
+	/**
+	 * @return current instruction name;
+	 */
 	public String getInstruction(){
 		return instructionName;
 	}
