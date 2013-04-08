@@ -40,17 +40,17 @@ public class Map {
 			reader = new BufferedReader(new FileReader(file));
 			width = new Integer(reader.readLine()); // first line
 			height = new Integer(reader.readLine()); // second line
-			map = new char[height][width];
+			map = new char[width][height];
 			String toRead = null; // third and rest of lines
-			for (int y = 0; y < height; y++) {
+			for (int row = 0; row < height; row++) {
 				toRead = reader.readLine();
-				if (y % 2 == 1) {
-					// move on column forward
-					toRead = toRead.substring(1, toRead.length());
-				}
-				for (int x = 0; x < width; x++) {
-					char rowcol = toRead.charAt(x * 2);
-					System.out.print(rowcol);
+//				if (row % 2 == 1) {
+//					// move on column forward
+//					toRead = toRead.substring(1, toRead.length());
+//				}
+				for (int col = 0; col < width; col++) {
+					char rowcol = toRead.charAt(col*2); 
+					//System.out.print(rowcol);
 					if (!((rowcol == '#') || (rowcol == '.')
 							|| (rowcol == '+') || (rowcol == '-'))) {
 						try{
@@ -59,10 +59,10 @@ public class Map {
 							throw new Exception("Number format not recognized: " + rowcol);
 						}
 					}
-					if((x>0) && (toRead.charAt(x*2-1) != ' ')){
-						throw new Exception("Character not recognized: " + toRead.charAt(x-1));
+					if((col>0) && (toRead.charAt(col*2-1) != ' ')){ 
+						throw new Exception("Character not recognized: " + toRead.charAt(col-1));
 					}
-					map[y][x] = rowcol;
+					map[row][col] = rowcol;
 				}				
 			}
 		} catch (Exception e) {

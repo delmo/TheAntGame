@@ -11,7 +11,7 @@ public class Run {
 		//System.out.println(Integer.toBinaryString(Marker.Five.getValue()));
 		Map map = new Map("sample.world", "sample");
 		//Map map = new Map("sample map", 150, 150);
-		//System.out.println(map.toString());
+		System.out.println(map.toString());
 		
 
 	}
