@@ -8,7 +8,7 @@ package theAntsPowerOf6.model;
  */
 public class Ant {
 	int id;
-	boolean colour;	
+	AntColor colour;	
 	int resting;
 	int direction;
 	boolean hasFood;
@@ -23,9 +23,9 @@ public class Ant {
 	 * Set the clan 
 	 * Set the position
 	 */
-	public Ant(int id, boolean colour, Position position){
+	public Ant(int id, AntColor antcolour, Position position){
 		this.id = id;
-		this.colour = colour;
+		this.colour = antcolour;
 		this.position = position;
 		this.resting = 0;
 		this.state = 0;
@@ -64,8 +64,8 @@ public class Ant {
 	/*
 	 * Check colour
 	 */
-	public boolean isColour() {
-		return colour;
+	public AntColor isColour() {
+		return this.colour;
 	}
 
 		

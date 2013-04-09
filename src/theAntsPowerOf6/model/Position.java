@@ -16,7 +16,7 @@ public class Position {
 
 	// where to turn left or right
 	//pseudo code is in the course website 
-	public int toTurn(Turn pointedWhere, int dir) {
+	public static int toTurn(Turn pointedWhere, int dir) {
 		int value;
 		if (pointedWhere == Turn.Left) { //turn to left
 			value = (dir + 5) % 6;

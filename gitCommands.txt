@@ -1,0 +1,26 @@
+GET REMOTE GIT
+>>> git remote add origin git@github:delmo/try_git.git
+
+PUSH FILES FIRST TIME
+>>> git push -u origin master
+
+PUSH FILES
+>>> git push origin master
+
+CHECK LAST PUSH
+>>> git pull origin master
+
+CHECK DIFFERENCE. FILES READY TO COMMIT ARE SHOWN IN HERE
+>>> git diff HEAD
+
+STAGE FILES
+>>>git add octofamily/octodog.txt
+
+SHOW STAGED DIFFERENCES
+>>>git diff --staged
+
+UNSTAGE FILES
+>>>git reset octofamily/octodod.txt
+
+REVERT THE CHANGES WHICH HAD BEEN UNSTAGED
+>>>git checkout -- octocat.txt

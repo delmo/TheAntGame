@@ -72,15 +72,19 @@ public class AntBrain {
 	 * @return all remaining states
 	 */
 	public Action[] getStates(){
-		return states;
+		return this.states;
 	}
 
 	
 	/**
 	 * @return current instruction name;
 	 */
-	public String getInstruction(){
-		return instructionName;
+	public Action getInstruction(int state){
+		if((state >= this.states.length) || (state < 0)){
+			return null;
+		}else{
+			return this.states[state];
+		}
 	}
 
 	@Override

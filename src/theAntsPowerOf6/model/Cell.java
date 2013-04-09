@@ -164,9 +164,9 @@ public class Cell
 
 
 	/*
-	 * Boolean if anthill sits in this cell.
+	 * Boolean if anthill sits on this cell.
 	 */
-	public boolean isAntHillSetIfNot(AntColor color)
+	public boolean isAntHill(AntColor color)
 	{
 		if (isAntHill)
 		{

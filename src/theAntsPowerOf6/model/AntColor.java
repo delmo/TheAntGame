@@ -19,9 +19,17 @@ public enum AntColor {
 	 */
 	AntColor getColor(){
 		if(value){
-			return AntColor.Red;
+			return Red;
 		}else{
-			return AntColor.Black;
+			return Black;
+		}
+	}
+
+	public AntColor getFoeColor() {
+		if(value){
+			return Black;
+		}else{
+			return Red;
 		}
 	}
 }

@@ -87,7 +87,6 @@ public class Map {
 		return height;
 	}
 	
-
 	public String toString()
 	{
 		String print = "";
@@ -109,5 +108,10 @@ public class Map {
 			print += "\n";
 		}
 		return print;
+	}
+
+	public char getWhoIsInMap(int i, int j) {
+		// TODO Auto-generated method stub
+		return this.map[i][j];
 	}
 }
