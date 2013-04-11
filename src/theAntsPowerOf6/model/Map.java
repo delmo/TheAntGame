@@ -114,4 +114,14 @@ public class Map {
 		// TODO Auto-generated method stub
 		return this.map[i][j];
 	}
+	
+	public Map getMap(){
+		Map themap = new Map(this.name, this.width, this.height);
+		for(int i=0; i< this.width; i++){
+			for(int j=0; j<this.height; j++){
+				themap.map[i][j] = this.map[i][j];
+			}
+		}
+		return themap;
+	}
 }

@@ -15,7 +15,11 @@ import java.util.Arrays;
  *
  */
 public class AntBrain {
-	private String instructionName;
+	private String name;
+	public String getName() {
+		return name;
+	}
+
 	private Action[] states;
 	
 	
@@ -27,7 +31,7 @@ public class AntBrain {
 	public AntBrain(String name, String file){
 		BufferedReader reader = null;
 		ArrayList<Action> actions = new ArrayList<Action>();
-		this.instructionName = name;
+		this.name = name;
 		try{
 			reader = new BufferedReader(new FileReader(file));
 			String line = null;
@@ -92,7 +96,7 @@ public class AntBrain {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((instructionName == null) ? 0 : instructionName.hashCode());
+				+ ((name == null) ? 0 : name.hashCode());
 		result = prime * result + Arrays.hashCode(states);
 		return result;
 	}
@@ -106,10 +110,10 @@ public class AntBrain {
 		if (!(obj instanceof AntBrain))
 			return false;
 		AntBrain other = (AntBrain) obj;
-		if (instructionName == null) {
-			if (other.instructionName != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!instructionName.equals(other.instructionName))
+		} else if (!name.equals(other.name))
 			return false;
 		if (!Arrays.equals(states, other.states))
 			return false;
