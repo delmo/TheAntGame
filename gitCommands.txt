@@ -24,3 +24,28 @@ UNSTAGE FILES
 
 REVERT THE CHANGES WHICH HAD BEEN UNSTAGED
 >>>git checkout -- octocat.txt
+
+CREATING GIT BRANCH
+>>>git branch branch_name
+
+SWITCH FROM MASTER FOR BRANCH
+>>>git checkout branch_name
+
+REMOVE AND STAGE FILES FROM MASTER OR BRANCH
+>>>git rm '*.txt'
+
+COMMIT REMOVAL
+>>>git commit -m "Remove all files."
+
+GOING BACK TO MASTER
+>>> git checkout master
+
+MERGE THE COPY OF BRANCH AND MASTER
+>>>git merge branch_name
+
+DELETE THE BRANCH
+>>>git branch -d branch_name
+
+PUSH MERGE FILES FROM GIT SERVER
+>>>git push
+

@@ -8,9 +8,9 @@ public class Play {
 		Tournament tournament;
 		if(playable){
 			tournament = new Tournament(maps, colonies);
-			if(there is map left){
-				play
-			}
+			//if(there is map left){
+			//	play
+			//}
 		}
 	}
 }

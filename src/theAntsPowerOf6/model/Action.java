@@ -79,7 +79,7 @@ public class Action {
 				mark = parseMarker(inputs[1]);
 				st1 = parseState(inputs[2]);
 			}else{
-				throw new Exception("Instruction cannot parse.");
+				throw new Exception("Instruction cannot parse." + command);
 			}
 		}catch(Exception e){
 			System.out.println("Cannot parse the command: " + e.getMessage());

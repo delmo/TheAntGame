@@ -1,5 +1,7 @@
 package theAntsPowerOf6.model;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -19,7 +21,7 @@ public class World {
 
 	public World(Colony black, Colony red, Map map) {
 		this.blackTeam = black;
-		this.redTeam = red;
+		this.redTeam = red;		
 		this.width = map.getWidth();
 		this.height = map.getHeight();
 		this.cells = new Cell[this.width][this.height];
@@ -30,17 +32,20 @@ public class World {
 		this.brains = new AntBrain[2];
 		this.brains[0] = red.getColonyBrain();
 		this.brains[1] = black.getColonyBrain();
+		getMap(map);
 	}
 	
 	private void step(int antId) {
 		if (isAntAlive(antId)) {
 			Position position = lookForAntID(antId);
+			System.out.println(position.toString());
 			Ant ant = getThisAntAtPosition(position);
-
+			System.out.println("ID:" +ant.getId()+";Resting:"+ant.getResting());
 			if (ant.getResting() > 0) {
 				ant.setResting();
 			} else {
 				Action action = getInstruction(ant.isColour(), ant.getState());
+				System.out.println(action.getInstruction());
 				if (action == null) {
 					return;
 				}
@@ -173,11 +178,16 @@ public class World {
 	}
 
 	public ArrayList<int[]> getStatistics() {
-		return statistics;
+		return this.statistics;
 	}
 
-	public void setStatistics(ArrayList<int[]> statistics) {
-		this.statistics = statistics;
+	public void setStatistics() {
+		int[] scores = new int[4];
+		scores[0] = countAliveAnts(AntColor.Black);
+		scores[1] = countScore(AntColor.Black);
+		scores[2] = countAliveAnts(AntColor.Red);
+		scores[3] = countScore(AntColor.Red);
+		this.statistics.add(scores);
 	}
 
 	//get cell in specified position
@@ -500,6 +510,37 @@ public class World {
 		return numAnts;
 	}
 
+	public Colony getTheWinner(){
+		int black = countScore(AntColor.Black);
+		int red = countScore(AntColor.Red);
+		if(black > red){
+			return this.blackTeam; //black is the winner
+		}else if(red > black){
+			return this.redTeam; //red is the winner
+		}else{
+			return null; //tie
+		}
+	}
+	
+	public void run(int numSteps){
+		int steps = numSteps;
+		while(steps > 0){
+			round();
+		}
+	}
+	
+	
+	private void round() {
+		// TODO Auto-generated method stub
+		this.rounds += 1;
+		if(this.rounds%10 == 0){
+			setStatistics();
+		}
+		for(int i=0; i<this.ants.size(); i++){
+			step(i);
+		}
+	}
+
 	public String toString() {
 		String print = "";
 		for (Cell[] row : this.cells) {
@@ -508,5 +549,36 @@ public class World {
 			}
 		}
 		return print;
+	}
+	
+	private void run(int numSteps, String file){
+		BufferedWriter writeOut = null;
+		try{
+			int r = 0;
+			writeOut = new BufferedWriter(new FileWriter(file));
+			while(r<numSteps){
+				round();
+				writeOut.write("Round number: " + r + "\n" + toString());
+				r++;
+			}
+			writeOut.close();
+		}catch(Exception e){
+			System.err.println("Cannot write to " + file + " : " + e.getMessage());
+			try{
+				if(writeOut != null){
+					writeOut.close();
+				}
+			}catch(Exception ie){
+				System.err.println("File cannot open nor close. " + ie.getMessage());
+			}
+		}finally{
+			try{
+				if(writeOut != null){
+					writeOut.close();
+				}
+			}catch(Exception oe){
+				oe.printStackTrace();
+			}
+		}
 	}
 }
