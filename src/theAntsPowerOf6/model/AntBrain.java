@@ -120,5 +120,11 @@ public class AntBrain {
 		return true;
 	}
 
-	
+	public String toString(){
+		String print = "";
+		for(Action action: this.states){
+			print += action.toString() + "\n";
+		}
+		return print;
+	}
 }

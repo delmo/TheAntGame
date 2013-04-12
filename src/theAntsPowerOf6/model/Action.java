@@ -283,4 +283,12 @@ public class Action {
 			throw new Exception("Direction: invalid direction exception.");
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Action [st1=" + st1 + ", st2=" + st2 + ", mark=" + mark
+				+ ", number=" + number + ", input=" + input + ", instruction="
+				+ instruction + ", dir=" + dir + ", con=" + con + ", turn="
+				+ turn + "]";
+	}
 }

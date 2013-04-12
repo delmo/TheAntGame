@@ -22,17 +22,24 @@ public class Run {
 	}
 
 	private static void setup(){
-		redBrain = new AntBrain("red brain", "clever1.brain");
-		blackBrain = new AntBrain("black brain", "clever2.brain");
+		redBrain = new AntBrain("red brain", "clever2.brain");
+		//System.out.println(redBrain.toString());
+		
+		blackBrain = new AntBrain("black brain", "clever1.brain");
+		//System.out.println(blackBrain.toString());
+		
 		redcolony = new Colony("Red team", redBrain, AntColor.Red);
 		blackcolony = new Colony("Black team", blackBrain, AntColor.Black);
+		
 		map = new Map("sample.world", "current game map");
 		//System.out.println(map.toString());
+		
 		world = new World(blackcolony, redcolony, map);
-//		for(Ant ant: world.getAnts()){
-//			System.out.println(ant.getId() + ":" + ant.isColour());	
-//		}
-		world.run(1000);
+		//for(Ant ant: world.getAnts()){
+		//	System.out.println(ant.getId() + ":" + ant.isColour());	
+		//}
+		
+		world.run(300000);
 		//world.getTheWinner().getColonyName();
 	}
 }

@@ -2,6 +2,7 @@ package theAntsPowerOf6.model;
 
 
 public class Colony {
+	
 	private String colonyName;
 	private AntBrain colonyBrain;
 	private AntColor conlonyColor;
@@ -36,4 +37,9 @@ public class Colony {
 		this.conlonyColor = conlonyColor;
 	}
 	
+	@Override
+	public String toString() {
+		return "Colony [colonyName=" + colonyName + ", colonyBrain="
+				+ colonyBrain + ", conlonyColor=" + conlonyColor + "]";
+	}
 }

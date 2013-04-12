@@ -35,12 +35,14 @@ public class World {
 		getMap(map);
 	}
 	
+	int counter=0;
 	private void step(int antId) {
 		if (isAntAlive(antId)) {
 			Position position = lookForAntID(antId);
-			System.out.println(position.toString());
+			Position oppPosition;
+			//System.out.println(position.toString());
 			Ant ant = getThisAntAtPosition(position);
-			System.out.println("ID:" +ant.getId()+";Resting:"+ant.getResting());
+			//System.out.println("ID:" +ant.getId()+";Resting:"+ant.getResting());
 			if (ant.getResting() > 0) {
 				ant.setResting();
 			} else {
@@ -50,8 +52,10 @@ public class World {
 					return;
 				}
 				// Sense sensedir st1 st2 cond
+				System.out.println("Step: "+ counter++);
+				System.out.println(action.getInstruction() == Instruction.Flip);
 				if (action.getInstruction() == Instruction.Sense) {
-					Position oppPosition = position.sensed_cell(
+					oppPosition = position.sensed_cell(
 							ant.getDirection(), action.getDir());
 					if (senseTheCell(action.getCon(), ant.isColour(),
 							oppPosition, action.getMark())) {
@@ -194,7 +198,11 @@ public class World {
 	public Cell getCells(Position position) {
 		int x = position.getX();
 		int y = position.getY();
-		return this.cells[x][y];
+		if (x < 0 || x >= width || y < 0 || y >= height)
+		{
+			return null;
+		}
+		return cells[x][y];
 	}
 
 	public void setCells(Cell[][] cells) {
@@ -212,18 +220,18 @@ public class World {
 	//load the map
 	public void getMap(Map map) {
 		int id = 0;
-		for (int i = 0; i < map.getWidth(); i++) {
-			for (int j = 0; j < map.getHeight(); j++) {
-				Position position = new Position(i, j);
-				Cell cell = new Cell(map.getWhoIsInMap(i, j), position);
+		for (int i = 0; i < map.getHeight(); i++) {
+			for (int j = 0; j < map.getWidth(); j++) {
+				Position position = new Position(j, i);
+				Cell cell = new Cell(map.getWhoIsInMap(j, i), position);
 				this.cells[i][j] = cell;
 				if (cell.isAntHill(AntColor.Red)) {
 					Ant ant = new Ant(id++, AntColor.Red, position);
-					this.ants.add(ant);
+					ants.add(ant);
 					cell.setAnt(ant);
 				} else if (cell.isAntHill(AntColor.Black)) {
 					Ant ant = new Ant(id++, AntColor.Black, position);
-					this.ants.add(ant);
+					ants.add(ant);
 					cell.setAnt(ant);
 				}
 			}
@@ -280,11 +288,11 @@ public class World {
 	}
 
 	public ArrayList<Cell> getAllMarkedCells() {
-		ArrayList allMarkedCells = new ArrayList();
-		for (int i = 1; i < this.width - 1; i++) {
-			for (int j = 1; j < this.height - 1; j++) {
-				if (this.cells[i][j].checkMarker()) {
-					allMarkedCells.add(this.cells[i][j]);
+		ArrayList<Cell> allMarkedCells = new ArrayList<Cell>();
+		for (int i = 1; i < height - 1; i++) {
+			for (int j = 1; j < width - 1; j++) {
+				if (cells[i][j].checkMarker()) {
+					allMarkedCells.add(cells[i][j]);
 				}
 			}
 		}
@@ -292,12 +300,12 @@ public class World {
 	}
 
 	public ArrayList<Cell> getAllChangedCells() {
-		ArrayList allChangedCells = new ArrayList<>();
-		for (int i = 1; i < this.width - 1; i++) {
-			for (int j = 1; j < this.height - 1; j++) {
-				if (this.cells[i][j].isChanged()) {
-					allChangedCells.add(this.cells[i][j]);
-					this.cells[i][j].setChanged(false);
+		ArrayList<Cell> allChangedCells = new ArrayList<Cell>();
+		for (int i = 1; i < height; i++) {
+			for (int j = 1; j < width; j++) {
+				if (cells[i][j].isChanged()) {
+					allChangedCells.add(cells[i][j]);
+					cells[i][j].setChanged(false);
 				}
 			}
 		}
@@ -305,10 +313,10 @@ public class World {
 	}
 
 	public boolean isAntAlive(int antID) {
-		if ((antID > this.ants.size()) || (antID < 0)) {
+		if ((antID > ants.size()) || (antID < 0)) {
 			return false;
 		}
-		return this.ants.get(antID) != null;
+		return ants.get(antID) != null;
 	}
 
 	private boolean isThisPositionHasAnt(Position position) {
@@ -328,8 +336,8 @@ public class World {
 	}
 
 	private Position lookForAntID(int antID) {
-		if (this.ants.get(antID) != null) {
-			return this.ants.get(antID).getPosition();
+		if (ants.get(antID) != null) {
+			return ants.get(antID).getPosition();
 		}
 		return null;
 	}
@@ -347,7 +355,7 @@ public class World {
 			if (cell.hasAnt()) {
 				Ant ant = cell.getAnt();
 				antMoveTo(ant, new Position(-1, -1));
-				this.ants.set(ant.getId(), null);
+				ants.set(ant.getId(), null);
 				cell.removeAnt();
 			}
 		}
@@ -438,7 +446,7 @@ public class World {
 			Position neighbour = position.adjacent_cell(i);
 			if ((isThisPositionHasAnt(neighbour))
 					&& (getThisAntAtPosition(neighbour).isColour() == colour)) {
-				adjAnts++;
+				adjAnts++;//adjAnts +=1
 			}
 		}
 		return adjAnts;
@@ -461,7 +469,7 @@ public class World {
 
 	private void checkForSurroundedAnts(Position position) {
 		checkForSurroundingAntAndKill(position);
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 6; i++) {//direction
 			Position adjAnt = position.adjacent_cell(i);
 			checkForSurroundingAntAndKill(adjAnt);
 		}
