@@ -5,6 +5,14 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * @author Rhayan
+ *
+ */
+/**
+ * @author Rhayan
+ *
+ */
 public class World {
 
 	// world is empty? what happen
@@ -124,34 +132,70 @@ public class World {
 		}
 	}
 
+	
+	/**
+	 * Get Black colony
+	 * @return
+	 */
 	public Colony getBlackTeam() {
 		return blackTeam;
 	}
 
+	/**
+	 * Set Black Colony
+	 * @param blackTeam
+	 */
 	public void setBlackTeam(Colony blackTeam) {
 		this.blackTeam = blackTeam;
 	}
 
+	/**
+	 * Get Red colony
+	 * @return
+	 */
 	public Colony getRedTeam() {
 		return redTeam;
 	}
 
+	
+	/**
+	 * Set Red Colony
+	 * @param redTeam
+	 */
 	public void setRedTeam(Colony redTeam) {
 		this.redTeam = redTeam;
 	}
 
+	
+	/**
+	 * Get World width 
+	 * @return
+	 */
 	public int getWidth() {
 		return width;
 	}
 
+	
+	/**
+	 * Set width of the world.
+	 * @param width
+	 */
 	public void setWidth(int width) {
 		this.width = width;
 	}
 
+	/**
+	 * Get height of the world.
+	 * @return
+	 */
 	public int getHeight() {
 		return height;
 	}
 
+	/**
+	 * Set height of the world.
+	 * @param height
+	 */
 	public void setHeight(int height) {
 		this.height = height;
 	}
@@ -208,7 +252,10 @@ public class World {
 	public void setCells(Cell[][] cells) {
 		this.cells = cells;
 	}
-
+	
+	public Cell[][] getCells(){
+		return this.cells;
+	}
 	public AntBrain[] getBrains() {
 		return brains;
 	}

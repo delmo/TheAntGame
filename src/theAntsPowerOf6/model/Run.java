@@ -31,15 +31,26 @@ public class Run {
 		redcolony = new Colony("Red team", redBrain, AntColor.Red);
 		blackcolony = new Colony("Black team", blackBrain, AntColor.Black);
 		
-		map = new Map("sample.world", "current game map");
+		map = new Map("1.world", "current game map");
 		//System.out.println(map.toString());
 		
 		world = new World(blackcolony, redcolony, map);
-		//for(Ant ant: world.getAnts()){
-		//	System.out.println(ant.getId() + ":" + ant.isColour());	
-		//}
 		
-		world.run(300000);
+		System.out.println("Cell info");
+		for(Cell[] cells: world.getCells()){
+			for(Cell cell: cells){
+				System.out.println(cell.getPosition().getX() + "," + cell.getPosition().getY());
+			}
+			
+		}
+		
+		System.out.println("Ants");
+		for(Ant ant: world.getAnts()){
+			System.out.println(ant.getId() + ":" + ant.isColour());
+			System.out.println(ant.getPosition().getX() + "," + ant.getPosition().getY());			
+		}
+		
+		//world.run(100);
 		//world.getTheWinner().getColonyName();
 	}
 }
