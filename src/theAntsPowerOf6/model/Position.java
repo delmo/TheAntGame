@@ -14,6 +14,27 @@ public class Position {
 		this.y = y;
 	}
 
+	@Override
+	public int hashCode() {
+		return 27*x+13*y;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Position))
+			return false;
+		Position other = (Position) obj;
+		if (x != other.x)
+			return false;
+		if (y != other.y)
+			return false;
+		return true;
+	}
+
 	// where to turn left or right
 	//pseudo code is in the course website 
 	public static int toTurn(Turn pointedWhere, int dir) {
@@ -93,22 +114,22 @@ public class Position {
 	 */
 	public Position adjacent_cell(int dir) {
 		if (dir == 0) {
-			return new Position(this.x + 1, this.y);
+			return new Position(x + 1, y);
 		}
 		if (dir == 1) {
-			return new Position(this.x + (this.y % 2 == 0 ? 0 : 1), this.y + 1);
+			return new Position(x + ((y % 2 == 0) ? 0 : 1), y + 1);
 		}
 		if (dir == 2) {
-			return new Position(this.x + (this.y % 2 == 0 ? -1 : 0), this.y + 1);
+			return new Position(x + ((y % 2 == 0) ? -1 : 0), y + 1);
 		}
 		if (dir == 3) {
-			return new Position(this.x - 1, this.y);
+			return new Position(x - 1, y);
 		}
 		if (dir == 4) {
-			return new Position(this.x + (this.y % 2 == 0 ? -1 : 0), this.y - 1);
+			return new Position(x + ((y % 2 == 0) ? -1 : 0), y - 1);
 		}
 		if (dir == 5) {
-			return new Position(this.x + (this.y % 2 == 0 ? 0 : 1), this.y - 1);
+			return new Position(x + ((y % 2 == 0) ? 0 : 1), y - 1);
 		} else {
 			return this;
 		}

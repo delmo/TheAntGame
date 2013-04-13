@@ -7,7 +7,7 @@ public class Map {
 
 	private char[][] map;
 	private String name;
-	private BufferedReader reader;
+	//private BufferedReader reader = null;
 	private int width;
 	private int height;
 
@@ -21,10 +21,10 @@ public class Map {
 		for (int x = 0; x < width; x++) {
 			map[0][x] = '#'; 
 		}	
-			for (int y = 1; y < height -1; y++) {
+			for (int y = 1; y < height - 1; y++) {
 				map[y][0] = '#';
-				for(int x = 1; x < width; x++){
-					map[x][y] = '.';
+				for(int x = 1; x < width - 1; x++){
+					map[y][x] = '.';
 			}
 			map[y][width - 1] = '#';
 		}
@@ -36,33 +36,34 @@ public class Map {
 
 	public Map(String file, String name) {
 		this.name = name;
+		BufferedReader reader = null;
 		try {
 			reader = new BufferedReader(new FileReader(file));
 			width = new Integer(reader.readLine()); // first line
 			height = new Integer(reader.readLine()); // second line
-			map = new char[width][height];
+			map = new char[height][width];
 			String toRead = null; // third and rest of lines
-			for (int row = 0; row < height; row++) {
+			for (int y = 0; y < height; y++) {
 				toRead = reader.readLine();
-//				if (row % 2 == 1) {
-//					// move on column forward
-//					toRead = toRead.substring(1, toRead.length());
-//				}
-				for (int col = 0; col < width; col++) {
-					char rowcol = toRead.charAt(col*2); 
+				if (y % 2 == 1) {
+					// move on column forward
+					toRead = toRead.substring(1, toRead.length());
+				}
+				for (int x = 0; x < width; x++) {
+					char rowcol = toRead.charAt(x*2); 
 					//System.out.print(rowcol);
 					if (!((rowcol == '#') || (rowcol == '.')
 							|| (rowcol == '+') || (rowcol == '-'))) {
 						try{
 							Integer.parseInt(""+rowcol);
 						}catch(NumberFormatException nfe){
-							throw new Exception("Number format not recognized: " + rowcol);
+							throw new ParseException("Number format not recognized: ", "" + rowcol);
 						}
 					}
-					if((col>0) && (toRead.charAt(col*2-1) != ' ')){ 
-						throw new Exception("Character not recognized: " + toRead.charAt(col-1));
+					if((x>0) && (toRead.charAt(x*2-1) != ' ')){ 
+						throw new ParseException("Character not recognized: ", "" + toRead.charAt(x-1));
 					}
-					map[row][col] = rowcol;
+					map[y][x] = rowcol;
 				}				
 			}
 		} catch (Exception e) {
@@ -110,18 +111,41 @@ public class Map {
 		return print;
 	}
 
-	public char getWhoIsInMap(int i, int j) {
+	public char getWhoIsInMap(int x, int y) {
 		// TODO Auto-generated method stub
-		return this.map[i][j];
+		return this.map[y][x];
 	}
 	
 	public Map getMap(){
 		Map themap = new Map(this.name, this.width, this.height);
-		for(int i=0; i< this.width; i++){
-			for(int j=0; j<this.height; j++){
-				themap.map[i][j] = this.map[i][j];
+		for(int y=0; y< this.width; y++){
+			for(int x=0; x<this.height; x++){
+				themap.map[y][x] = this.map[y][x];
 			}
 		}
 		return themap;
 	}
+	
+	public void createRandomMap(){
+		//create clear map
+		map = new char[width][height];
+		//fill top row with '#'
+		for (int x = 0; x < width; x++) {
+			map[0][x] = '#'; 
+		}	
+			for (int y = 1; y < height - 1; y++) {
+				map[y][0] = '#';
+				for(int x = 1; x < width - 1; x++){
+					map[y][x] = '.';
+			}
+			map[y][width - 1] = '#';
+		}
+		//fill bottom row
+		for (int x = 0; x < width; x++) {
+			map[height - 1][x] = '#';
+		}
+		
+		//create rocks
+		
+	}//method
 }

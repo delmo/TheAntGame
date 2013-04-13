@@ -26,6 +26,7 @@ public class World {
 	private ArrayList<int[]> statistics;
 	private Cell[][] cells;
 	private AntBrain[] brains;
+	private Randomizer randomizer;
 
 	public World(Colony black, Colony red, Map map) {
 		this.blackTeam = black;
@@ -40,14 +41,14 @@ public class World {
 		this.brains = new AntBrain[2];
 		this.brains[0] = red.getColonyBrain();
 		this.brains[1] = black.getColonyBrain();
+		this.randomizer = new Randomizer();
 		getMap(map);
 	}
 	
 	int counter=0;
 	private void step(int antId) {
 		if (isAntAlive(antId)) {
-			Position position = lookForAntID(antId);
-			Position oppPosition;
+			Position position = lookForAntID(antId);			
 			//System.out.println(position.toString());
 			Ant ant = getThisAntAtPosition(position);
 			//System.out.println("ID:" +ant.getId()+";Resting:"+ant.getResting());
@@ -55,15 +56,15 @@ public class World {
 				ant.setResting();
 			} else {
 				Action action = getInstruction(ant.isColour(), ant.getState());
-				System.out.println(action.getInstruction());
+				//System.out.println(action.getInstruction());
 				if (action == null) {
 					return;
 				}
 				// Sense sensedir st1 st2 cond
-				System.out.println("Step: "+ counter++);
-				System.out.println(action.getInstruction() == Instruction.Flip);
+				//System.out.println("Step: "+ counter++);
+				//System.out.println(action.getInstruction() == Instruction.Flip);
 				if (action.getInstruction() == Instruction.Sense) {
-					oppPosition = position.sensed_cell(
+					Position oppPosition = position.sensed_cell(
 							ant.getDirection(), action.getDir());
 					if (senseTheCell(action.getCon(), ant.isColour(),
 							oppPosition, action.getMark())) {
@@ -121,8 +122,7 @@ public class World {
 					}
 				//Flip p st1 st2
 				} else if (action.getInstruction() == Instruction.Flip) {
-					Random random = new Random(100);
-					if ((random.nextInt()) == 0) {
+					if ((this.randomizer.nextInt(action.getNumber())) == 0) {
 						ant.setState(action.getSt1());
 					} else {
 						ant.setState(action.getSt2());
