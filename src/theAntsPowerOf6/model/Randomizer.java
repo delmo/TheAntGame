@@ -2,6 +2,12 @@ package theAntsPowerOf6.model;
 
 import java.math.BigInteger;
 
+/**
+ * This class is use to in random flip command.
+ * @author Tristan
+ * @version 0.01
+ *
+ */
 public class Randomizer {
 	
 	private long x;

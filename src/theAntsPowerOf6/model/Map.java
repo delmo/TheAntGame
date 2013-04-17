@@ -3,6 +3,11 @@ package theAntsPowerOf6.model;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+/**
+ * This class is use to generate an map and read from a file.
+ * @author Tristan
+ *
+ */
 public class Map {
 
 	private char[][] map;
@@ -11,6 +16,12 @@ public class Map {
 	private int width;
 	private int height;
 
+	/**
+	 * Constructor which takes name of the map, height and width.
+	 * @param name
+	 * @param width
+	 * @param height
+	 */
 	public Map(String name, int width, int height) {
 		this.name = name;
 		this.width = width;
@@ -34,6 +45,11 @@ public class Map {
 		}
 	}
 
+	/**
+	 * Another constructor which take the name of the map and String filename.
+	 * @param file
+	 * @param name
+	 */
 	public Map(String file, String name) {
 		this.name = name;
 		BufferedReader reader = null;
@@ -79,15 +95,26 @@ public class Map {
 		}
 	}
 	
+	/**
+	 * @return width of the current map.
+	 */
 	public int getWidth() {
 		return width;
 	}
 	
 
+	/**
+	 * @return height of the current map.
+	 */
 	public int getHeight() {
 		return height;
 	}
 	
+	/* 
+	 * Print the map on the console.
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString()
 	{
 		String print = "";
@@ -111,11 +138,19 @@ public class Map {
 		return print;
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 * @return the character in specific map location.
+	 */
 	public char getWhoIsInMap(int x, int y) {
 		// TODO Auto-generated method stub
 		return this.map[y][x];
 	}
 	
+	/**
+	 * @return the current map.
+	 */
 	public Map getMap(){
 		Map themap = new Map(this.name, this.width, this.height);
 		for(int y=0; y< this.width; y++){
@@ -126,6 +161,9 @@ public class Map {
 		return themap;
 	}
 	
+	/**
+	 * Create random map.
+	 */
 	public void createRandomMap(){
 		//create clear map
 		map = new char[width][height];

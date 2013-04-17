@@ -17,7 +17,10 @@ public class Run {
 		//Map map = new Map("sample.world", "sample");
 		//Map map = new Map("sample map", 150, 150);
 		//System.out.println(map.toString());
-		setup();	
+		//setup();	
+		
+		Randomizer rand = new Randomizer();
+		System.out.println(rand.nextInt(16389));
 
 	}
 
