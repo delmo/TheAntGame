@@ -1,9 +1,11 @@
 package theAntsPowerOf6.model;
 
 /** 
+ * Action Class is used to hold information about the behaviour of an ant.
  * @author Tristan
  * @version 0.03
  */
+
 public class Action {
 
 	private int st1;
@@ -16,6 +18,11 @@ public class Action {
 	private Condition con;
 	private Turn turn;
 	
+	
+	/**
+	 * This method is used to read the String behaviour of the ant brain.
+	 * @param line is the String line of text which includes states, marker number, instruction, direction and condition.  
+	 */
 	public Action(String line){
 		input = line;
 		st1=-1;
@@ -154,6 +161,7 @@ public class Action {
 	}
 
 	/**
+	 * Parse the Turn behaviour if it is left or right.
 	 * @param string
 	 * @return Turn
 	 * @throws Exception
@@ -210,10 +218,14 @@ public class Action {
 	}
 
 	/**
+	 * Parse the String if one of these condition is met:
+	 * Friend,Foe,FriendWithFood, FoeWithFood, Food, Rock, Marker, FoeMarker,
+	 * Home, FoeHome
+	 * 
 	 * @param string
 	 * @return Condition
 	 * @throws Exception
-	 * Friend,Foe,FriendWithFood, FoeWithFood, Food, Rock, Marker, FoeMarker, Home, FoeHome;
+	 * 
 	 */
 	private Condition parseCondition(String string) throws Exception {
 		// TODO Auto-generated method stub
@@ -245,7 +257,7 @@ public class Action {
 	}
 
 	/**
-	 * String state to which integer state
+	 * Parse String state to which integer state
 	 * @param string
 	 * @return number of state
 	 * @throws Exception
@@ -264,10 +276,11 @@ public class Action {
 	}
 
 	/**
+	 * Parse String direction if they are: Here, Ahead, LeftAhead, or RightAhead.
 	 * @param string
 	 * @return Direction
 	 * @throws Exception
-	 * Here, Ahead, LeftAhead,  RightAhead;
+	 * 
 	 */
 	private Direction parseDirection(String string) throws Exception {
 		// TODO Auto-generated method stub
@@ -284,6 +297,10 @@ public class Action {
 		}
 	}
 
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Action [st1=" + st1 + ", st2=" + st2 + ", mark=" + mark

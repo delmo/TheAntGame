@@ -1,7 +1,7 @@
 package theAntsPowerOf6.model;
 
 /**
- * 
+ * This class holds the status of an ant.
  * @author Tristan
  * @version 0.02
  *
@@ -18,7 +18,7 @@ public class Ant {
 	//World world;
 	
 	/*
-	 * Ant Constructor
+	 * Ant Constructor which initialize the unique ID of an ant, colony colour and position.
 	 * Set individual id
 	 * Set the clan 
 	 * Set the position
@@ -35,34 +35,29 @@ public class Ant {
 	}
 	
 	/*
-	 * get state
+	 * get state of an ant.
 	 */
 	public int getState() {
 		return state;
 	}
 
 	/*
-	 * set state, dont know how to impement yet
+	 * set state
 	 */
 	public void setState(int state) {
 		this.state = state;
 	}	
 
 	/*
-	 * get id
+	 * get unique ID of an ant.
 	 */
 	public int getId() {
 		return id;
 	}
+	
 
-	/*I don't no need this method as it can only be set once
-	public void setId(int id) {
-		this.id = id;
-	}
-	*/
-
-	/*
-	 * Check colour
+	/* 
+	 * Check colour of an ant.
 	 */
 	public AntColor isColour() {
 		return this.colour;
@@ -142,6 +137,10 @@ public class Ant {
 		return position;
 	}
 
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Ant [id=" + id + ", colour=" + colour + ", resting=" + resting

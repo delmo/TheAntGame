@@ -1,10 +1,12 @@
 package theAntsPowerOf6.model;
 
 /*
+ * This Enum is used to mark a specific cell. The are 6 different markers for each ant colony.
+ * 1<<0 = 1, 1<<1 2, 1<<2 = 4, 1<<3 = 8, 1<<4 = 16, 1<<5 = 32
  * @author Tristan
  * @version 0.01
  * Enum Marker values  
- * 1<<0 = 1, 1<<1 2, 1<<2 = 4, 1<<3 = 8, 1<<4 = 16, 1<<5 = 32
+ * 
  */
 public enum Marker
 {

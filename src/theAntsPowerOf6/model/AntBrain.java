@@ -7,13 +7,11 @@ import java.util.Arrays;
 
 
 /**
+ * This class is used to hold information about an ant brain.
  * @author Tristan
  * @version 0.02
  */
-/**
- * @author Rhayan
- *
- */
+
 public class AntBrain {
 	private String name;
 	public String getName() {
@@ -24,7 +22,7 @@ public class AntBrain {
 	
 	
 	/**
-	 * 
+	 * Constructor which takes String name of an ant brain and String filename.
 	 * @param name, instruction
 	 * @param file, AntBrain file name
 	 */
@@ -91,6 +89,9 @@ public class AntBrain {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,6 +102,9 @@ public class AntBrain {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -120,6 +124,11 @@ public class AntBrain {
 		return true;
 	}
 
+	/* 
+	 * Print finite state machine of an ant brain.
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString(){
 		String print = "";
 		for(Action action: this.states){

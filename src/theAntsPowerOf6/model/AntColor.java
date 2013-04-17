@@ -1,6 +1,6 @@
 package theAntsPowerOf6.model;
 /**
- * 
+ * This class is used to compare the colour of an ant and its colony.
  * @author Tristan
  * @version 0.01
  *
@@ -10,6 +10,10 @@ public enum AntColor {
 	private boolean value;
 	
 	
+	/**
+	 * Constructor to set the colour. True for Red and False for Black.
+	 * @param val
+	 */
 	AntColor(boolean val){
 		this.value = val;
 	}
@@ -25,6 +29,10 @@ public enum AntColor {
 		}
 	}
 
+	/**
+	 * Check foe colour.
+	 * @return foe colour
+	 */
 	public AntColor getFoeColor() {
 		if(value){
 			return Black;

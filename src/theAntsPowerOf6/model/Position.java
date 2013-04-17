@@ -2,6 +2,8 @@ package theAntsPowerOf6.model;
 
 
 /**
+ * This class is used to hold the x-axis and y-axis of the cell in the world.
+ * This represents the 2-dimentional array.
  * @author Tristan
  * @version 0.02
  */

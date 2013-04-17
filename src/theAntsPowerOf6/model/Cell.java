@@ -7,7 +7,7 @@ import theAntsPowerOf6.model.Position;
 
 
 /**
- * 
+ * This class is used to hold the status of each cell. If it has ant, rock, ant hill, food count or marker.
  * @author Tristan
  * @version 0.03
  */
@@ -260,6 +260,11 @@ public class Cell
 	}
 
 	
+	/* 
+	 * Print String representation of the status of all cells.
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString()
 	{
