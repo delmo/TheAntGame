@@ -16,11 +16,12 @@ import theAntsPowerOf6.model.AntColor;
 import theAntsPowerOf6.model.Colony;
 
 /**
- * @author Rhayan
+ * @author Tristan
  *
  */
 public class ColonyTest {
 
+	Colony col;
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -40,6 +41,9 @@ public class ColonyTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		AntColor color = AntColor.Black;
+		AntBrain brain = new AntBrain("intelligent", "clever2.brain");
+		col = new Colony("Red Team", brain, color);
 	}
 
 	/**
@@ -49,20 +53,14 @@ public class ColonyTest {
 	public void tearDown() throws Exception {
 	}
 
-	/**
-	 * Test method for {@link theAntsPowerOf6.model.Colony#Colony(java.lang.String, theAntsPowerOf6.model.AntBrain, theAntsPowerOf6.model.AntColor)}.
-	 */
-	@Test
-	public void testColony() {
-		fail("Not yet implemented");
-	}
+	
 
 	/**
 	 * Test method for {@link theAntsPowerOf6.model.Colony#getColonyName()}.
 	 */
 	@Test
 	public void testGetColonyName() {
-		fail("Not yet implemented");
+		assertEquals("Red Team", "Red Team", col.getColonyName());
 	}
 
 	/**
@@ -70,7 +68,8 @@ public class ColonyTest {
 	 */
 	@Test
 	public void testSetColonyName() {
-		fail("Not yet implemented");
+		col.setColonyName("Black Team");
+		assertEquals("Change to black", "Black Team", col.getColonyName());
 	}
 
 	/**
@@ -78,23 +77,18 @@ public class ColonyTest {
 	 */
 	@Test
 	public void testGetColonyBrain() {
-		fail("Not yet implemented");
+		assertEquals("Get the clever2.brain", new AntBrain("intelligent", "clever2.brain"), col.getColonyBrain());
 	}
 
-	/**
-	 * Test method for {@link theAntsPowerOf6.model.Colony#setColonyBrain(theAntsPowerOf6.model.AntBrain)}.
-	 */
-	@Test
-	public void testSetColonyBrain() {
-		fail("Not yet implemented");
-	}
-
+	
 	/**
 	 * Test method for {@link theAntsPowerOf6.model.Colony#getConlonyColor()}.
 	 */
 	@Test
 	public void testGetConlonyColor() {
-		fail("Not yet implemented");
+		AntColor c = AntColor.Red;
+		col.setConlonyColor(c);
+		assertEquals("Change to red color", AntColor.Red, col.getConlonyColor());
 	}
 
 	/**
@@ -102,15 +96,10 @@ public class ColonyTest {
 	 */
 	@Test
 	public void testSetConlonyColor() {
-		fail("Not yet implemented");
+		AntColor c = AntColor.Black;
+		col.setConlonyColor(c);
+		assertEquals("Change to Black color", AntColor.Black, col.getConlonyColor());
 	}
-
-	/**
-	 * Test method for {@link theAntsPowerOf6.model.Colony#toString()}.
-	 */
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
+	
 
 }

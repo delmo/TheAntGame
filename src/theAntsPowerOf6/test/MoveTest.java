@@ -16,7 +16,7 @@ import theAntsPowerOf6.model.Move;
 import theAntsPowerOf6.model.Position;
 
 /**
- * @author Rhayan
+ * @author Tristan
  *
  */
 public class MoveTest {

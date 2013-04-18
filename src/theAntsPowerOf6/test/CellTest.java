@@ -17,7 +17,7 @@ import theAntsPowerOf6.model.Cell;
 import theAntsPowerOf6.model.Position;
 
 /**
- * @author Rhayan
+ * @author Tristan
  *
  */
 public class CellTest {

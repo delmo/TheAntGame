@@ -16,16 +16,18 @@ import theAntsPowerOf6.model.AntColor;
 import theAntsPowerOf6.model.Position;
 
 /**
- * @author Rhayan
+ * @author Tristan
  *
  */
 public class AntTest {
 
+	Ant ant = new Ant(1, AntColor.Red, new Position(1, 1));
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		
 	}
 
 	/**
@@ -55,6 +57,7 @@ public class AntTest {
 	@Test
 	public void testAnt() {
 		fail("Not yet implemented");
+		
 	}
 
 	/**
@@ -62,7 +65,7 @@ public class AntTest {
 	 */
 	@Test
 	public void testGetState() {
-		fail("Not yet implemented");
+		assertEquals("Initial state must be zero", 0, ant.getState());
 	}
 
 	/**
@@ -78,7 +81,7 @@ public class AntTest {
 	 */
 	@Test
 	public void testGetId() {
-		fail("Not yet implemented");
+		assertEquals("Ant ID is equal", 1, ant.getId());
 	}
 
 	/**
@@ -86,7 +89,7 @@ public class AntTest {
 	 */
 	@Test
 	public void testIsColour() {
-		fail("Not yet implemented");
+		assertEquals("Ant colour is equal", AntColor.Red, ant.isColour());
 	}
 
 	/**
@@ -94,7 +97,7 @@ public class AntTest {
 	 */
 	@Test
 	public void testGetResting() {
-		fail("Not yet implemented");
+		assertEquals("Ant resting is zero", 0, ant.getResting());;
 	}
 
 	/**
@@ -102,7 +105,8 @@ public class AntTest {
 	 */
 	@Test
 	public void testSetResting() {
-		fail("Not yet implemented");
+		ant.setResting();		
+		assertEquals("It should be 14", 14, ant.getResting());
 	}
 
 	/**
@@ -110,7 +114,9 @@ public class AntTest {
 	 */
 	@Test
 	public void testDecResting() {
-		fail("Not yet implemented");
+		ant.setResting();
+		ant.decResting();
+		assertEquals("It should be 13", 13, ant.getResting());
 	}
 
 	/**
@@ -118,7 +124,8 @@ public class AntTest {
 	 */
 	@Test
 	public void testGetDirection() {
-		fail("Not yet implemented");
+		ant.setDirection(4);
+		assertEquals("Result is 4", 4, ant.getDirection());
 	}
 
 	/**
@@ -126,7 +133,8 @@ public class AntTest {
 	 */
 	@Test
 	public void testSetDirection() {
-		fail("Not yet implemented");
+		ant.setDirection(1);
+		assertEquals("Result is 1", 1, ant.getDirection());
 	}
 
 	/**
@@ -134,7 +142,7 @@ public class AntTest {
 	 */
 	@Test
 	public void testHasfood() {
-		fail("Not yet implemented");
+		assertFalse(ant.hasfood());
 	}
 
 	/**
@@ -142,23 +150,19 @@ public class AntTest {
 	 */
 	@Test
 	public void testSetHasfood() {
-		fail("Not yet implemented");
+		ant.setHasfood(true);
+		assertTrue(ant.hasfood());
 	}
 
-	/**
-	 * Test method for {@link theAntsPowerOf6.model.Ant#step(int)}.
-	 */
-	@Test
-	public void testStep() {
-		fail("Not yet implemented");
-	}
+	
 
 	/**
 	 * Test method for {@link theAntsPowerOf6.model.Ant#move(theAntsPowerOf6.model.Position)}.
 	 */
 	@Test
 	public void testMove() {
-		fail("Not yet implemented");
+		ant.move(new Position(2,2));
+		assertEquals("Position should be 2,2", new Position(2,2), ant.getPosition());
 	}
 
 	/**
@@ -166,15 +170,10 @@ public class AntTest {
 	 */
 	@Test
 	public void testGetPosition() {
-		fail("Not yet implemented");
+		ant.move(new Position(2,2));
+		assertEquals("Position should be 3,3", new Position(3,3), ant.getPosition());
 	}
 
-	/**
-	 * Test method for {@link theAntsPowerOf6.model.Ant#toString()}.
-	 */
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
+	
 
 }

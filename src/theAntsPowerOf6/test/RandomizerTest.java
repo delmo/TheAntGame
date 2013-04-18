@@ -14,7 +14,7 @@ import org.junit.Test;
 import theAntsPowerOf6.model.Randomizer;
 
 /**
- * @author Rhayan
+ * @author Tristan
  *
  */
 public class RandomizerTest {

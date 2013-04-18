@@ -60,7 +60,7 @@ public class World {
 			// System.out.println("ID:"
 			// +ant.getId()+";Resting:"+ant.getResting());
 			if (ant.getResting() > 0) {
-				ant.setResting();
+				ant.decResting();
 			} else {
 				Action action = getInstruction(ant.isColour(), ant.getState());
 				// System.out.println(action.getInstruction());

@@ -14,11 +14,12 @@ import org.junit.Test;
 import theAntsPowerOf6.model.AntBrain;
 
 /**
- * @author Rhayan
+ * @author Tristan
  *
  */
 public class AntBrainTest {
 
+	AntBrain brain;
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -38,6 +39,8 @@ public class AntBrainTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
+	
+		brain = new AntBrain("Test Brain", "clever1.brain");
 	}
 
 	/**
@@ -47,68 +50,25 @@ public class AntBrainTest {
 	public void tearDown() throws Exception {
 	}
 
-	/**
-	 * Test method for {@link theAntsPowerOf6.model.AntBrain#hashCode()}.
-	 */
-	@Test
-	public void testHashCode() {
-		fail("Not yet implemented");
-	}
+	
 
 	/**
 	 * Test method for {@link theAntsPowerOf6.model.AntBrain#getName()}.
 	 */
 	@Test
 	public void testGetName() {
-		fail("Not yet implemented");
+		assertEquals("name of the brain" , "Test Brain", brain.getName());
 	}
+	
 
-	/**
-	 * Test method for {@link theAntsPowerOf6.model.AntBrain#AntBrain(java.lang.String, java.lang.String)}.
-	 */
-	@Test
-	public void testAntBrain() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link theAntsPowerOf6.model.AntBrain#getStateSize()}.
-	 */
-	@Test
-	public void testGetStateSize() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link theAntsPowerOf6.model.AntBrain#getStates()}.
-	 */
-	@Test
-	public void testGetStates() {
-		fail("Not yet implemented");
-	}
 
 	/**
 	 * Test method for {@link theAntsPowerOf6.model.AntBrain#getInstruction(int)}.
 	 */
 	@Test
 	public void testGetInstruction() {
-		fail("Not yet implemented");
+		assertEquals("State 0", "Turn Left 1", brain.getInstruction(0).toString());
 	}
-
-	/**
-	 * Test method for {@link theAntsPowerOf6.model.AntBrain#equals(java.lang.Object)}.
-	 */
-	@Test
-	public void testEqualsObject() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link theAntsPowerOf6.model.AntBrain#toString()}.
-	 */
-	@Test
-	public void testToString() {
-		fail("Not yet implemented");
-	}
+	
 
 }

@@ -14,7 +14,7 @@ import org.junit.Test;
 import theAntsPowerOf6.model.Map;
 
 /**
- * @author Rhayan
+ * @author Tristan
  *
  */
 public class MapTest {

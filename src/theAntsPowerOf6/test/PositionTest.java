@@ -16,7 +16,7 @@ import theAntsPowerOf6.model.Position;
 import theAntsPowerOf6.model.Turn;
 
 /**
- * @author Rhayan
+ * @author Tristan
  *
  */
 public class PositionTest {

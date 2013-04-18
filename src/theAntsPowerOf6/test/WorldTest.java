@@ -20,7 +20,7 @@ import theAntsPowerOf6.model.Position;
 import theAntsPowerOf6.model.World;
 
 /**
- * @author Rhayan
+ * @author Tristan
  *
  */
 public class WorldTest {
