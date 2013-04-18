@@ -52,7 +52,7 @@ public class Run {
 //			System.out.println(ant.getPosition().getX() + "," + ant.getPosition().getY());			
 //		}
 		
-		world.run(100);
+		world.run(300000);
 		world.getTheWinner().getColonyName();
 	}
 }

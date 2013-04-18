@@ -244,36 +244,7 @@ public class World {
 		this.ants = ants;
 	}
 
-	/**
-	 * @return all moves.
-	 */
-	public ArrayList<Move> getAntMoves() {
-
-		return antMoves;
-	}
-
-	public void setAntMoves(ArrayList<Move> antMoves) {
-		this.antMoves = antMoves;
-	}
-
-	/**
-	 * @return statistics of the game.
-	 */
-	public ArrayList<int[]> getStatistics() {
-		return this.statistics;
-	}
-
-	/**
-	 * Count number of alive ants and food count for each colony.
-	 */
-	public void setStatistics() {
-		int[] scores = new int[4];
-		scores[0] = countAliveAnts(AntColor.Black);
-		scores[1] = countScore(AntColor.Black);
-		scores[2] = countAliveAnts(AntColor.Red);
-		scores[3] = countScore(AntColor.Red);
-		this.statistics.add(scores);
-	}
+	
 
 	/**
 	 * Get cell in specified position
@@ -404,6 +375,37 @@ public class World {
 	}
 
 	/**
+	 * @return all moves.
+	 */
+	public ArrayList<Move> getAntMoves() {
+
+		return antMoves;
+	}
+
+	public void setAntMoves(ArrayList<Move> antMoves) {
+		this.antMoves = antMoves;
+	}
+
+	/**
+	 * @return statistics of the game.
+	 */
+	public ArrayList<int[]> getStatistics() {
+		return this.statistics;
+	}
+
+	/**
+	 * Count number of alive ants and food count for each colony.
+	 */
+	public void setStatistics() {
+		int[] scores = new int[4];
+		scores[0] = countAliveAnts(AntColor.Black);
+		scores[1] = countScore(AntColor.Black);
+		scores[2] = countAliveAnts(AntColor.Red);
+		scores[3] = countScore(AntColor.Red);
+		this.statistics.add(scores);
+	}
+	
+	/**
 	 * Mark if the position had changed.
 	 * 
 	 * @param position
@@ -484,44 +486,7 @@ public class World {
 		return null;
 	}
 
-	/**
-	 * Get the position of an ant based on their ID.
-	 * @param antID
-	 * @return Position of an ant.
-	 */
-	private Position lookForAntID(int antID) {
-		if (ants.get(antID) != null) {
-			return ants.get(antID).getPosition();
-		}
-		return null;
-	}
-
-	/**
-	 * Remove an ant in specified position.
-	 * @param position
-	 */
-	private void removeAntAtPosition(Position position) {
-		Cell cell = getCells(position);
-		if (cell != null) {
-			cell.removeAnt();
-		}
-	}
-
-	/**
-	 * Turn an ant to food and recount the number of food in the cell.
-	 * @param position
-	 */
-	private void killAntAtPosition(Position position) {
-		Cell cell = getCells(position);
-		if (cell != null) {
-			if (cell.hasAnt()) {
-				Ant ant = cell.getAnt();
-				antMoveTo(ant, new Position(-1, -1));
-				ants.set(ant.getId(), null);
-				cell.removeAnt();
-			}
-		}
-	}
+	
 
 	/**
 	 * Move ant to the next posible position.
@@ -842,6 +807,45 @@ public class World {
 				}
 			} catch (Exception oe) {
 				oe.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * Get the position of an ant based on their ID.
+	 * @param antID
+	 * @return Position of an ant.
+	 */
+	private Position lookForAntID(int antID) {
+		if (ants.get(antID) != null) {
+			return ants.get(antID).getPosition();
+		}
+		return null;
+	}
+
+	/**
+	 * Remove an ant in specified position.
+	 * @param position
+	 */
+	private void removeAntAtPosition(Position position) {
+		Cell cell = getCells(position);
+		if (cell != null) {
+			cell.removeAnt();
+		}
+	}
+
+	/**
+	 * Turn an ant to food and recount the number of food in the cell.
+	 * @param position
+	 */
+	private void killAntAtPosition(Position position) {
+		Cell cell = getCells(position);
+		if (cell != null) {
+			if (cell.hasAnt()) {
+				Ant ant = cell.getAnt();
+				antMoveTo(ant, new Position(-1, -1));
+				ants.set(ant.getId(), null);
+				cell.removeAnt();
 			}
 		}
 	}
